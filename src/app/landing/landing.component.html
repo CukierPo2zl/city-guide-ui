@@ -1,0 +1,121 @@
+<div class="hero">
+  <div class="extra-header" *ngIf="!mobile">
+    <div class="brand">
+      City <br />
+      Guide
+    </div>
+  </div>
+  <div class="header">
+    <div class="desctiption flex-center">
+      <div class="p">
+        <p class="item">
+          Najlepsze miejsce zeby rozpoczac podróz.
+        </p>
+        <div class="btn-group">
+          <app-button type="filled">start now</app-button>
+          <span class="spacer"></span>
+          <app-button type="outline-light">demo</app-button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero-register flex-center">
+      <mat-card class="mat-elevation-z5">
+        <mat-card-header>
+          <mat-card-title>Dołącz do nas!</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <form class="example-form">
+
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'">
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <app-button type="outline full-width">Sign up</app-button>
+
+
+          </form>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="liquid">
+    <div class="fluid" *ngIf="!mobile">
+      <svg viewBox="0 0 1440 320">
+        <path fill="#ffffff" fill-opacity="1"
+          d="M0,288L48,256C96,224,192,160,288,133.3C384,107,480,117,576,133.3C672,149,768,171,864,165.3C960,160,1056,128,1152,96C1248,64,1344,32,1392,16L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+        </path>
+      </svg>
+    </div>
+    <div class="under">
+      <div class="content">
+        <mat-card [ngClass]="{
+          'mat-elevation-z5': !mobile,
+          'mat-elevation-z0': mobile
+        }">
+          <img mat-card-image src="https://cdn.pixabay.com/photo/2017/08/25/06/54/street-map-2679271_960_720.jpg"
+            alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+
+        </mat-card>
+        <mat-card [ngClass]="{
+          'mat-elevation-z5': !mobile,
+          'mat-elevation-z0': mobile
+        }">
+          <mat-card-header>
+            <mat-card-title>Trzy latwe kroki</mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="simple-steps">
+              <img src="https://img.icons8.com/nolan/96/castle.png" />
+              <p>Wybierz jakie atrakcje chcesz zobaczyć</p>
+
+
+              <img src="https://img.icons8.com/nolan/96/feedback.png" />
+              <p>Poznaj opinie o miejscach, które chcesz odwiedzić</p>
+
+
+              <img src="https://img.icons8.com/nolan/96/numbered-list.png" />
+              <p>Zaplanujemy trasę zwiedzania za Ciebie!</p>
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

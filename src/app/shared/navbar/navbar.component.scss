@@ -1,0 +1,19 @@
+.navbar{
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px 0 10px 0;
+  height: 30px;
+
+   .brand{
+     width: 10px;
+      height: 10px;
+
+   }
+   .auth{
+     margin-right: 15px;
+   }
+}
