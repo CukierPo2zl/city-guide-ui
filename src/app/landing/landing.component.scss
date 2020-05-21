@@ -1,6 +1,6 @@
 @import "breakpoints";
+@import "global";
 
-$primary: #002c86;
 
 .hero {
   width: 100%;
@@ -9,7 +9,9 @@ $primary: #002c86;
   display: flex;
   background-color: $primary;
   background-image: url(../../assets/topography.svg);
+
   // background: linear-gradient(160deg,$primary 9%, #6a98f7 100%);
+
   .extra-header{
     flex: 1;
     padding: 0 6%;
@@ -105,9 +107,7 @@ $primary: #002c86;
   width: 100%;
 }
 
-.full-width {
-  width: 100%;
-}
+
 .btn-group{
   margin-top: 30px;
 }
@@ -117,4 +117,12 @@ $primary: #002c86;
 }
 .spacer{
   margin: 15px;
+}
+
+.gradient{
+  background: linear-gradient(160deg,$primary 9%, #6a98f7 100%);
+}
+
+.card-main{
+  background-image: url(../../assets/topography-light.svg);
 }

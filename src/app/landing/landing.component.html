@@ -1,3 +1,4 @@
+<app-dialog-tools [color]="'white'"></app-dialog-tools>
 <div class="hero">
   <div class="extra-header" *ngIf="!mobile">
     <div class="brand">
@@ -12,9 +13,9 @@
           Najlepsze miejsce zeby rozpoczac podróz.
         </p>
         <div class="btn-group">
-          <app-button type="filled">start now</app-button>
+          <app-button type="filled" link="app">start now</app-button>
           <span class="spacer"></span>
-          <app-button type="outline-light">demo</app-button>
+          <app-button type="outline-light" link="app">demo</app-button>
         </div>
 
       </div>
@@ -56,9 +57,7 @@
               </button>
             </mat-form-field>
 
-            <app-button type="outline full-width">Sign up</app-button>
-
-
+            <app-button link="app" type="outline full-width">Sign up</app-button>
           </form>
         </mat-card-content>
 
@@ -76,30 +75,18 @@
     </div>
     <div class="under">
       <div class="content">
-        <mat-card [ngClass]="{
+        <mat-card class="card-main" [ngClass]="{
           'mat-elevation-z5': !mobile,
           'mat-elevation-z0': mobile
         }">
           <img mat-card-image src="https://cdn.pixabay.com/photo/2017/08/25/06/54/street-map-2679271_960_720.jpg"
-            alt="Photo of a Shiba Inu">
+            alt="Photo of map">
           <mat-card-content>
             <p>
               The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
               A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
               bred for hunting.
             </p>
-          </mat-card-content>
-
-        </mat-card>
-        <mat-card [ngClass]="{
-          'mat-elevation-z5': !mobile,
-          'mat-elevation-z0': mobile
-        }">
-          <mat-card-header>
-            <mat-card-title>Trzy latwe kroki</mat-card-title>
-            <mat-card-subtitle></mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
             <div class="simple-steps">
               <img src="https://img.icons8.com/nolan/96/castle.png" />
               <p>Wybierz jakie atrakcje chcesz zobaczyć</p>
@@ -115,7 +102,9 @@
           </mat-card-content>
 
         </mat-card>
+
       </div>
     </div>
+
   </div>
 </div>

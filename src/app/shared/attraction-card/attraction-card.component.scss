@@ -1,0 +1,10 @@
+@import "breakpoints";
+
+.attraction-card{
+  height: 200px;
+  width: 200px;
+
+  @include for-size(XS-max){
+    width: 100%;
+  }
+}

@@ -1,0 +1,42 @@
+<mat-card class="filter-card mat-elevation-z3">
+
+  <mat-card-subtitle>
+    Co chcesz zobaczyć?
+  </mat-card-subtitle>
+
+    <div class="full-width flex-filter">
+
+        <mat-form-field class="city-field">
+          <input type="text"
+                 placeholder="Miasto"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let city of filteredOptions | async" [value]="city.name">
+              {{ city.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+
+
+
+      <mat-form-field class="category-field">
+        <mat-label>Kategoria</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let category of categories" [value]="category.name">
+            {{category.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="fab-submit">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+
+    </div>
+</mat-card>

@@ -1,4 +1,14 @@
-<mat-sidenav-container>
-  <mat-sidenav>Start</mat-sidenav>
-  <mat-sidenav-content>Main</mat-sidenav-content>
-</mat-sidenav-container>
+<app-nav>
+  <app-dialog-tools [color]="'#002c86'"></app-dialog-tools>
+  <div class="container">
+    <app-filter></app-filter>
+    <div class="spacer"></div>
+    <div class="grid">
+      <div class="item" *ngFor="let card of cards">
+        <app-attraction-card>
+          {{ card }}
+        </app-attraction-card>
+      </div>
+    </div>
+  </div>
+</app-nav>

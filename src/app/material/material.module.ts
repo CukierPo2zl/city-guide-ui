@@ -5,6 +5,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+
 @NgModule({
   exports: [
     MatCardModule,
@@ -12,7 +18,12 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatToolbarModule,
+    MatListModule
   ],
 })
 export class MaterialModule { }

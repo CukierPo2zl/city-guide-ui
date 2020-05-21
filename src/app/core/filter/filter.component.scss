@@ -1,0 +1,29 @@
+@import "global";
+@import "breakpoints";
+
+.filter-card {
+  .flex-filter {
+    display: flex;
+    justify-content: space-between;
+    @include for-size(XS-max) {
+      flex-direction: column;
+    }
+  }
+}
+
+.city-field {
+  width: 50%;
+  @include for-size(XS-max) {
+    width: 100%;
+  }
+}
+
+.category-field {
+  width: 25%;
+  @include for-size(XS-max) {
+    width: 100%;
+  }
+}
+.fab-submit {
+  margin-left: 15px;
+}
