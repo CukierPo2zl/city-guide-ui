@@ -10,7 +10,8 @@ export class ButtonDirective {
    ngOnInit(): void {
     this.el.nativeElement.style.backgroundColor = 'transparent';
     this.el.nativeElement.style.color = this.textColor;
-    this.el.nativeElement.style.border = 'none';
+    this.el.nativeElement.style.border = '2px solid ' + this.textColor;
+    this.el.nativeElement.style.borderRadius = '4px';
     this.el.nativeElement.style.fontWeight = '900';
     this.el.nativeElement.style.textTransform = 'uppercase';
 

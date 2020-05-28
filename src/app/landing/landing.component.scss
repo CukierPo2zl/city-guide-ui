@@ -126,3 +126,12 @@
 .card-main{
   background-image: url(../../assets/topography-light.svg);
 }
+
+.top-bar{
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  padding: 10px 0 10px 0;
+  height: 30px;
+}

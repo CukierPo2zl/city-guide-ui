@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  margin-right: 25px;
+  button {
+    mat-icon {
+      font-size: 30px;
+    }
+  }
+}
+button.mat-icon-button {
+  &.cdk-program-focused {
+    ::ng-deep .mat-button-focus-overlay {
+      opacity: 0;
+    }
+  }
+}
+
+.elements{
+  position: absolute;
+  bottom: 0;
+  right: -14px;
+  border-radius: 10px;
+  background-color: rgb(61, 152, 255);
+  width: 20px;
+  height: 20px;
+  color: white;
+  text-align: center;
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Attraction } from 'src/app/models/attraction';
 
 @Component({
   selector: 'app-attraction-card',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttractionCardComponent implements OnInit {
 
-  constructor() { }
 
+  constructor() { }
+  @Input()
+  instance: Attraction;
+  @Input()
+  isTrending: boolean;
+  @Output()
+  elementsChange: EventEmitter<Attraction> = new EventEmitter<Attraction>();
+
+  // added: boolean;
   ngOnInit(): void {
+    // this.added = false;
+  }
+
+  addToCollection() {
+    this.instance.added = true;
+    this.elementsChange.emit(this.instance);
   }
 
 }

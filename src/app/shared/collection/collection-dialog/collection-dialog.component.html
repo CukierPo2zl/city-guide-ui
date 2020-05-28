@@ -1,0 +1,24 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>Twoje atrakcje</h2>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+  <mat-list>
+    <mat-list-item *ngFor="let element of data.elements">
+
+      <div mat-line>{{element.name}}</div>
+      <div mat-line> {{element.city.name}}, {{element.category.name}} </div>
+      <button mat-icon-button>
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button color="primary" mat-raised-button>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</mat-dialog-actions>

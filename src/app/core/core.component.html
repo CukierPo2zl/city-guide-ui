@@ -1,12 +1,14 @@
 <app-nav>
-  <app-dialog-tools [color]="'#002c86'"></app-dialog-tools>
+  <div class="navbar">
+    <app-collection [elements]="this.elements"></app-collection>
+    <app-dialog-tools [color]="'#002c86'"></app-dialog-tools>
+  </div>
   <div class="container">
-    <app-filter></app-filter>
+    <app-filter (attractionsChange)="attractionChange($event)"></app-filter>
     <div class="spacer"></div>
     <div class="grid">
-      <div class="item" *ngFor="let card of cards">
-        <app-attraction-card>
-          {{ card }}
+      <div class="item" *ngFor="let card of attractions">
+        <app-attraction-card (elementsChange)="elementsChange($event)" [instance]="this.card" [isTrending]="this.isTrending">
         </app-attraction-card>
       </div>
     </div>

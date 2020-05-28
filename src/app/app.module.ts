@@ -17,6 +17,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { FilterComponent } from './core/filter/filter.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AttractionCardComponent } from './shared/attraction-card/attraction-card.component';
+import { CollectionComponent } from './shared/collection/collection.component';
+import { CollectionDialogComponent } from './shared/collection/collection-dialog/collection-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AttractionCardComponent } from './shared/attraction-card/attraction-car
     DialogToolsComponent,
     NavComponent,
     FilterComponent,
-    AttractionCardComponent
+    AttractionCardComponent,
+    CollectionComponent,
+    CollectionDialogComponent
   ],
   imports: [
     BrowserModule,

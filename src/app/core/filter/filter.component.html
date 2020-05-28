@@ -3,7 +3,7 @@
   <mat-card-subtitle>
     Co chcesz zobaczyć?
   </mat-card-subtitle>
-
+  <form [formGroup]="stateForm" (ngSubmit)="onSubmit()">
     <div class="full-width flex-filter">
 
         <mat-form-field class="city-field">
@@ -11,7 +11,7 @@
                  placeholder="Miasto"
                  aria-label="Number"
                  matInput
-                 [formControl]="myControl"
+                 formControlName = "city"
                  [matAutocomplete]="auto">
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
             <mat-option *ngFor="let city of filteredOptions | async" [value]="city.name">
@@ -25,7 +25,7 @@
 
       <mat-form-field class="category-field">
         <mat-label>Kategoria</mat-label>
-        <mat-select>
+        <mat-select formControlName = "category">
           <mat-option *ngFor="let category of categories" [value]="category.name">
             {{category.name}}
           </mat-option>
@@ -33,10 +33,11 @@
       </mat-form-field>
 
       <div class="fab-submit">
-        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <button type="submit" mat-stroked-button color="primary" aria-label="Example icon button with a delete icon">
           <mat-icon>search</mat-icon>
         </button>
       </div>
 
     </div>
+    </form>
 </mat-card>

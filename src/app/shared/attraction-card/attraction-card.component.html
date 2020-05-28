@@ -1,5 +1,35 @@
-<mat-card class="attraction-card">
+<mat-card class="attraction-card mat-elevation-z0">
+
+  <img mat-card-image
+    src="https://bialystoksubiektywnie.com/wp-content/uploads/2018/05/Bialystok-subiektywnie-blog-o-podlasiu-Ogrody-Pa%C5%82acu-Branickich-w-Bia%C5%82ymstoku-14.jpg"
+    alt="Photo of a Shiba Inu">
   <mat-card-content>
-    <ng-content></ng-content>
+    <mat-card-title>
+      {{ (this.instance.name.length>30)
+            ? (this.instance.name | slice:0:30)+'...'
+            : (this.instance.name)
+      }}
+    </mat-card-title>
+    <mat-card-subtitle>{{this.instance.city.name}}, {{this.instance.category.name}}</mat-card-subtitle>
+
+    <p> {{ (this.instance.description.length>50)
+              ? (this.instance.description | slice:0:50)+'...'
+              : (this.instance.description)
+        }}</p>
+
   </mat-card-content>
+  <mat-card-footer>
+      <button (click)="addToCollection()" mat-fab color="primary" [disabled]="this.instance.added">
+        <mat-icon *ngIf="!this.instance.added; else elementAdded">add</mat-icon>
+        <ng-template #elementAdded>
+          <mat-icon>done</mat-icon>
+        </ng-template>
+      </button>
+  </mat-card-footer>
+  <div *ngIf="isTrending" class="popular">
+    <div>
+      <mat-icon>star</mat-icon>
+    </div>
+    <div>popular</div>
+  </div>
 </mat-card>

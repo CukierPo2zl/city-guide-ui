@@ -1,0 +1,18 @@
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+}
+.mat-dialog-content {
+  min-height:400px;
+  .mat-icon.notranslate.material-icons.mat-icon-no-color:hover {
+    color: red;
+  }
+}
+
+button.mat-icon-button {
+  &.cdk-program-focused {
+    ::ng-deep .mat-button-focus-overlay {
+      opacity: 0;
+    }
+  }
+}
