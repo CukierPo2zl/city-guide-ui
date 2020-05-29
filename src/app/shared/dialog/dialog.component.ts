@@ -39,7 +39,7 @@ export class DialogToolsComponent implements OnInit {
   template: `
   <h1>Sign in</h1>
   <form [formGroup]="stateForm" (ngSubmit)="onSubmit()">
-
+  <mat-error *ngIf="serverError">Nieprawidłowy email lub hasło</mat-error>
 <mat-form-field class="full-width">
   <mat-label>Email</mat-label>
   <input matInput  placeholder="Ex. pat@example.com" formControlName="email">
@@ -65,6 +65,8 @@ export class DialogComponent {
     public dialogRef: MatDialogRef<DialogComponent>,
     private router: Router
   ) { }
+
+  serverError: boolean;
   stateForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -76,6 +78,9 @@ export class DialogComponent {
       .subscribe(() => {
         this.dialogRef.close();
         this.router.navigate(['/app']);
-      });
+      }, error => {
+          this.serverError = true;
+        }
+      );
   }
 }

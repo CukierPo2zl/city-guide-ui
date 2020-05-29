@@ -11,7 +11,7 @@
 
       <div mat-line>{{element.name}}</div>
       <div mat-line> {{element.city.name}}, {{element.category.name}} </div>
-      <button mat-icon-button>
+      <button (click)="removeElement(element)" mat-icon-button>
         <mat-icon>delete_outline</mat-icon>
       </button>
     </mat-list-item>

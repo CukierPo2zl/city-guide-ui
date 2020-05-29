@@ -3,19 +3,29 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { HttpHeaders } from '@angular/common/http';
 import { Attraction } from '../models/attraction';
+import { BehaviorSubject } from 'rxjs';
 
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  })
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class AttractionService {
   constructor(private http: HttpClient) { }
+  loaded = new BehaviorSubject<boolean>(false);
+  // tslint:disable-next-line: variable-name
+  _attractions = new BehaviorSubject<Attraction[]>([]);
+  dataStore: { attractions: Attraction[] } = { attractions: [] }
+  readonly attractions = this._attractions.asObservable();
+
+
+  loadTrendingAttractions() {
+    this.getTrendingAttractions().subscribe((res: Attraction[]) => {
+      this.dataStore.attractions = res;
+      this._attractions.next(Object.assign({}, this.dataStore).attractions);
+    },
+      error => console.log('failed to fetch trending attractions'));
+  }
 
   getAttractions(city: string, category: string) {
     if (city && category) {
@@ -28,18 +38,18 @@ export class AttractionService {
       return this.getAttractionsByCategory(category);
     }
   }
-  getAttractionsByCity(city: string) {
+  private getAttractionsByCity(city: string) {
     return this.http.get<Attraction[]>(environment.url + 'api/attraction/?city=' + city);
   }
-  getAttractionsByCategory(category: string) {
+  private getAttractionsByCategory(category: string) {
     return this.http.get<Attraction[]>(environment.url + 'api/attraction/?category=' + category);
   }
-  getAttractionsByCityAndCategory(city: string, category: string) {
+  private getAttractionsByCityAndCategory(city: string, category: string) {
     return this.http.get<Attraction[]>(environment.url + 'api/attraction/?city=' + city + '&category=' + category);
   }
 
-  getTrendingAttractions(){
-    return this.http.get<Attraction[]>(environment.url+'api/attraction/trending');
+  private getTrendingAttractions() {
+    return this.http.get<Attraction[]>(environment.url + 'api/attraction/trending');
   }
 
 }

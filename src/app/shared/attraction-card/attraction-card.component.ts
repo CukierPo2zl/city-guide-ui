@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Attraction } from 'src/app/models/attraction';
+import { CollectionService } from 'src/app/services/collection.service';
 
 @Component({
   selector: 'app-attraction-card',
@@ -9,19 +10,17 @@ import { Attraction } from 'src/app/models/attraction';
 export class AttractionCardComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private collectionService: CollectionService) { }
   @Input()
   instance: Attraction;
   @Input()
   isTrending: boolean;
-  @Output()
-  elementsChange: EventEmitter<Attraction> = new EventEmitter<Attraction>();
 
   ngOnInit(): void {}
 
   addToCollection() {
     this.instance.added = true;
-    this.elementsChange.emit(this.instance);
+    this.collectionService.addToCollection(this.instance);
   }
 
 }

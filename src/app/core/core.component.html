@@ -1,7 +1,7 @@
 <app-nav>
   <div class="navbar">
     <app-collection [elements]="this.elements"></app-collection>
-    <div class="current-user">
+    <div *ngIf="this.isLoggedIn()" class="current-user">
       <mat-icon>account_circle</mat-icon>
       <div *ngIf="this.currentUser">{{ this.currentUser.username }}</div>
     </div>
@@ -14,7 +14,7 @@
     <div class="spacer"></div>
     <div class="grid">
       <div class="item" *ngFor="let card of attractions">
-        <app-attraction-card (elementsChange)="elementsChange($event)" [instance]="this.card"
+        <app-attraction-card [instance]="this.card"
           [isTrending]="this.isTrending">
         </app-attraction-card>
       </div>

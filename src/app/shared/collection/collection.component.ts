@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { CollectionDialogComponent } from './collection-dialog/collection-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Attraction } from 'src/app/models/attraction';
@@ -10,7 +10,6 @@ import { Attraction } from 'src/app/models/attraction';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent implements OnInit {
-
   constructor(public dialog: MatDialog) { }
 
   @Input()
