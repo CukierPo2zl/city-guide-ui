@@ -1,14 +1,21 @@
 <app-nav>
   <div class="navbar">
     <app-collection [elements]="this.elements"></app-collection>
-    <app-dialog-tools [color]="'#002c86'"></app-dialog-tools>
+    <div class="current-user">
+      <mat-icon>account_circle</mat-icon>
+      <div *ngIf="this.currentUser">{{ this.currentUser.username }}</div>
+    </div>
+    <app-dialog-tools *ngIf="!this.isLoggedIn()" [color]="'#002c86'"></app-dialog-tools>
+    <button (click)="logOut()" style="margin-right: 15px;" *ngIf="this.isLoggedIn()" [appNavBtn]="'#002c86'">log
+      out</button>
   </div>
   <div class="container">
     <app-filter (attractionsChange)="attractionChange($event)"></app-filter>
     <div class="spacer"></div>
     <div class="grid">
       <div class="item" *ngFor="let card of attractions">
-        <app-attraction-card (elementsChange)="elementsChange($event)" [instance]="this.card" [isTrending]="this.isTrending">
+        <app-attraction-card (elementsChange)="elementsChange($event)" [instance]="this.card"
+          [isTrending]="this.isTrending">
         </app-attraction-card>
       </div>
     </div>

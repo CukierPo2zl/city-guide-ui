@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-button',
   styleUrls: ['./button.component.scss'],
   template: `
-    <button [routerLink]="link" class='btn' [ngClass]="type">
+    <button [routerLink]="link" class='btn' [ngClass]="btnType" type="type">
       <ng-content>
       </ng-content>
     </button>
@@ -13,9 +13,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ButtonComponent implements OnInit {
 
   text: string;
-  @Input() type: string;
+  @Input() btnType: string;
+
   @Input() link: string;
 
+  @Input() type: string;
   constructor() { }
 
   ngOnInit(): void {

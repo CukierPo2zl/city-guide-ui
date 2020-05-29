@@ -32,6 +32,10 @@ export class FilterComponent implements OnInit {
   filteredOptions: Observable<City[]>;
 
   categories: Category[] = [];
+  extraValue: Category = {
+    pk: null,
+    name: null,
+  };
 
   constructor(
     private cityService: CityService,
@@ -42,13 +46,17 @@ export class FilterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    /** Load avaible cities to form */
     this.cityService.getCities().subscribe((res: City[]) => {
       this.cities = res;
     });
-
+    /** Load avaible categories to form */
     this.categoryService.getCategories().subscribe((res: Category[]) => {
       this.categories = res;
+      /** Adds value which means 'get from all categoties' */
+      this.categories.push(
+        this.extraValue
+      );
     });
 
     // tslint:disable-next-line: no-non-null-assertion
@@ -66,7 +74,6 @@ export class FilterComponent implements OnInit {
 
 
   onSubmit() {
-    console.warn(this.stateForm.value);
     this.attractionService.getAttractions(this.stateForm.get('city').value, this.stateForm.get('category').value)
       .subscribe((res: Attraction[]) => {
         this.attractionsChange.emit(res);

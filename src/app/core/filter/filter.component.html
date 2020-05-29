@@ -27,7 +27,11 @@
         <mat-label>Kategoria</mat-label>
         <mat-select formControlName = "category">
           <mat-option *ngFor="let category of categories" [value]="category.name">
-            {{category.name}}
+            {{
+              (category.name)
+                ? (category.name)
+                : 'Wszystko'
+            }}
           </mat-option>
         </mat-select>
       </mat-form-field>

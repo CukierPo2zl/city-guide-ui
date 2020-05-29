@@ -1,5 +1,5 @@
 @import "breakpoints";
-
+@import "global";
 .container{
   padding: 20px;
   max-width: 1300px;
@@ -10,7 +10,21 @@
   height: 20px;
   width: 100%;
 }
+.current-user{
+  display: flex;
+  align-items: center;
 
+  div{padding: 5px;}
+  mat-icon{
+    color: $primary;
+  }
+  &:after, &:before{
+    height: 25px;
+    border: 1px solid #abadb7;
+    margin: 0 15px 0 15px;
+    content: "";
+  }
+}
 .grid{
   max-width: 1300px;
   margin: 0 auto;
@@ -31,7 +45,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 1;
+  z-index: 3;
   padding: 10px 0 10px 0;
   height: 30px;
   display: flex;

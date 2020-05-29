@@ -15,10 +15,12 @@ import { ButtonDirective } from './shared/directives/button.directive';
 import { NavComponent } from './shared/nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FilterComponent } from './core/filter/filter.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AttractionCardComponent } from './shared/attraction-card/attraction-card.component';
 import { CollectionComponent } from './shared/collection/collection.component';
 import { CollectionDialogComponent } from './shared/collection/collection-dialog/collection-dialog.component';
+import { TokenInterceptor } from './helpers/token.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,10 @@ import { CollectionDialogComponent } from './shared/collection/collection-dialog
     LayoutModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

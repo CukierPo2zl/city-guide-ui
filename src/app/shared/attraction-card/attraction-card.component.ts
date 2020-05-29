@@ -17,10 +17,7 @@ export class AttractionCardComponent implements OnInit {
   @Output()
   elementsChange: EventEmitter<Attraction> = new EventEmitter<Attraction>();
 
-  // added: boolean;
-  ngOnInit(): void {
-    // this.added = false;
-  }
+  ngOnInit(): void {}
 
   addToCollection() {
     this.instance.added = true;
