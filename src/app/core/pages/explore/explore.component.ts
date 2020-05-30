@@ -15,7 +15,7 @@ export class ExploreComponent implements OnInit {
   /** The property which sets 'popular' badge */
   isTrending: boolean;
   /** Attractions added to my collection  */
-  // elements: Attraction[];
+
 
   constructor(
     private attractionService: AttractionService,
@@ -23,6 +23,7 @@ export class ExploreComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.attractionService.loaded.next(false);
     /** subscribe attraction array */
     this.attractionService.attractions.subscribe(res => this.attractions = res);
 
@@ -31,9 +32,13 @@ export class ExploreComponent implements OnInit {
     this.isTrending = true;
   }
 
-  // /** Gets attractions from FilterComponent */
+  // /** Get signal from FilterComponent */
   attractionChange(event) {
     this.isTrending = false;
+  }
+
+  loaded(){
+    return this.attractionService.loaded.value;
   }
 
 }

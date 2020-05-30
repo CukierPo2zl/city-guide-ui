@@ -1,9 +1,22 @@
 <app-filter (attractionsChange)="attractionChange($event)"></app-filter>
-    <div class="spacer"></div>
-    <div class="grid">
-      <div class="item" *ngFor="let card of attractions">
-        <app-attraction-card [instance]="this.card"
-          [isTrending]="this.isTrending">
-        </app-attraction-card>
-      </div>
+<div class="spacer"></div>
+<div *ngIf="this.loaded(); else loading" class="grid">
+
+
+  <div *ngIf="attractions.length === 0; else attractionsLoaded" class="empty-list">
+    <mat-icon>sentiment_dissatisfied</mat-icon>
+    Brak atrakcji. Zmień kategorię i/lub miasto.
+  </div>
+
+  <ng-template #attractionsLoaded>
+    <div class="item" *ngFor="let card of attractions">
+      <app-attraction-card [instance]="this.card" [isTrending]="this.isTrending">
+      </app-attraction-card>
     </div>
+</ng-template>
+
+</div>
+
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>

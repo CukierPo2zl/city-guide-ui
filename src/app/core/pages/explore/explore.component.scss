@@ -20,3 +20,16 @@
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+.empty-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: #3d3e42;
+  position: absolute;
+  mat-icon{
+    font-size: 30px;
+    margin-right: 15px;
+  }
+}

@@ -8,7 +8,6 @@
 <mat-dialog-content class="mat-typography">
   <mat-list>
     <mat-list-item *ngFor="let element of data.elements">
-
       <div mat-line>{{element.name}}</div>
       <div mat-line> {{element.city.name}}, {{element.category.name}} </div>
       <button (click)="removeElement(element)" mat-icon-button>

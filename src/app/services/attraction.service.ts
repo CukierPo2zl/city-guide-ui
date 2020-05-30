@@ -13,13 +13,17 @@ import { BehaviorSubject } from 'rxjs';
 export class AttractionService {
   constructor(private http: HttpClient) { }
 
+  loaded = new BehaviorSubject(false);
+
   attractionsSource = new BehaviorSubject<Attraction[]>([]);
   myCollectionSource = new BehaviorSubject<Attraction[]>([]);
 
   attractionsDataStore: { attractions: Attraction[] } = { attractions: [] };
   collectionDataStore: { myCollection: Attraction[] } = { myCollection: [] };
 
+  /** attractions to display */
   readonly attractions = this.attractionsSource.asObservable();
+  /** 'koszyk' */
   readonly myCollection = this.myCollectionSource.asObservable();
 
 
@@ -30,6 +34,14 @@ export class AttractionService {
 
     this.attractionsDataStore.attractions.forEach((obj) => {
       if (instance.pk === obj.pk) {
+        obj.added = true;
+      }
+    });
+  }
+
+  remarkFABs(){
+    this.attractionsDataStore.attractions.forEach((obj) => {
+      if (this.collectionDataStore.myCollection.find(element => element.pk === obj.pk)) {
         obj.added = true;
       }
     });
@@ -62,6 +74,7 @@ export class AttractionService {
         });
         this.attractionsDataStore.attractions = res;
         this.attractionsSource.next(Object.assign({}, this.attractionsDataStore).attractions);
+        this.loaded.next(true);
       },
       error => console.log('failed to fetch attractions'));
 
@@ -71,6 +84,8 @@ export class AttractionService {
       this.attractionsDataStore.attractions = res;
       // Push a new copy of our attraction list to all Subscribers.
       this.attractionsSource.next(Object.assign({}, this.attractionsDataStore).attractions);
+      this.remarkFABs();
+      this.loaded.next(true);
     },
       error => console.log('failed to fetch trending attractions'));
   }

@@ -18,14 +18,14 @@
         }}</p>
 
   </mat-card-content>
-  <mat-card-footer>
+  <div class="actions">
       <button (click)="addToCollection()" mat-fab color="primary" [disabled]="this.instance.added">
         <mat-icon *ngIf="!this.instance.added; else elementAdded">add</mat-icon>
         <ng-template #elementAdded>
           <mat-icon>done</mat-icon>
         </ng-template>
       </button>
-  </mat-card-footer>
+  </div>
   <div *ngIf="isTrending" class="popular">
     <div>
       <mat-icon>whatshot</mat-icon>

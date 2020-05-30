@@ -11,6 +11,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   exports: [
@@ -25,7 +26,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatAutocompleteModule,
     MatToolbarModule,
     MatListModule,
-    MatChipsModule
+    MatChipsModule,
+    MatProgressBarModule
   ],
 })
 export class MaterialModule { }
