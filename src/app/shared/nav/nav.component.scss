@@ -36,3 +36,10 @@ mat-toolbar{
   top: 0;
   z-index: 3;
 }
+mat-nav-list{
+  a{
+    mat-icon{
+      margin-right: 10px;
+    }
+  }
+}

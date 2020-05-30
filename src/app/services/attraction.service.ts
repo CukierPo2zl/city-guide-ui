@@ -12,17 +12,65 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AttractionService {
   constructor(private http: HttpClient) { }
-  loaded = new BehaviorSubject<boolean>(false);
-  // tslint:disable-next-line: variable-name
-  _attractions = new BehaviorSubject<Attraction[]>([]);
-  dataStore: { attractions: Attraction[] } = { attractions: [] }
-  readonly attractions = this._attractions.asObservable();
+
+  attractionsSource = new BehaviorSubject<Attraction[]>([]);
+  myCollectionSource = new BehaviorSubject<Attraction[]>([]);
+
+  attractionsDataStore: { attractions: Attraction[] } = { attractions: [] };
+  collectionDataStore: { myCollection: Attraction[] } = { myCollection: [] };
+
+  readonly attractions = this.attractionsSource.asObservable();
+  readonly myCollection = this.myCollectionSource.asObservable();
 
 
+  addToCollection(instance: Attraction) {
+    this.collectionDataStore.myCollection.push(instance);
+    // Push a new copy of our collection list to all Subscribers.
+    this.myCollectionSource.next(Object.assign({}, this.collectionDataStore).myCollection);
+
+    this.attractionsDataStore.attractions.forEach((obj) => {
+      if (instance.pk === obj.pk) {
+        obj.added = true;
+      }
+    });
+  }
+
+  removeFromCollection(instance: Attraction) {
+    this.collectionDataStore.myCollection.forEach((c, i) => {
+      if (c.pk === instance.pk) {
+        this.collectionDataStore.myCollection.splice(i, 1);
+      }
+    });
+    this.myCollectionSource.next(Object.assign({}, this.collectionDataStore).myCollection);
+
+    this.attractionsDataStore.attractions.forEach((obj) => {
+      if (instance.pk === obj.pk) {
+        obj.added = false;
+      }
+    });
+  }
+
+
+  loadAttractions(city: string, category: string) {
+
+    this.getAttractions(city, category).subscribe(
+      (res: Attraction[]) => {
+        res.forEach((obj) => {
+          if (this.collectionDataStore.myCollection.find(element => element.pk === obj.pk)) {
+            obj.added = true;
+          }
+        });
+        this.attractionsDataStore.attractions = res;
+        this.attractionsSource.next(Object.assign({}, this.attractionsDataStore).attractions);
+      },
+      error => console.log('failed to fetch attractions'));
+
+  }
   loadTrendingAttractions() {
     this.getTrendingAttractions().subscribe((res: Attraction[]) => {
-      this.dataStore.attractions = res;
-      this._attractions.next(Object.assign({}, this.dataStore).attractions);
+      this.attractionsDataStore.attractions = res;
+      // Push a new copy of our attraction list to all Subscribers.
+      this.attractionsSource.next(Object.assign({}, this.attractionsDataStore).attractions);
     },
       error => console.log('failed to fetch trending attractions'));
   }

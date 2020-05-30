@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Attraction } from 'src/app/models/attraction';
-import { CollectionService } from 'src/app/services/collection.service';
+import { AttractionService } from 'src/app/services/attraction.service';
 
 @Component({
   selector: 'app-collection-dialog',
@@ -13,15 +13,14 @@ export class CollectionDialogComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private collectionService: CollectionService
+    private attractionService: AttractionService
   ) { }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  removeElement(element: Attraction){
-    element.added = false;
-    this.collectionService.removeFromCollection(element);
+  removeElement(element: Attraction) {
+    this.attractionService.removeFromCollection(element);
   }
 
 }

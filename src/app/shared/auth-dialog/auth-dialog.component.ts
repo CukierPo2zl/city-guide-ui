@@ -5,31 +5,26 @@ import { AuthenticationService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dialog-tools',
+  selector: 'app-auth-dialog-tools',
   template: `
     <div class="auth">
     <button [appNavBtn]="color" (click)="openDialog()">sign in</button>
   </div>
 
   `,
-  styleUrls: ['./dialog.component.scss']
+  styleUrls: ['./auth-dialog.component.scss']
 })
-export class DialogToolsComponent implements OnInit {
+export class AuthDialogToolsComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
   @Input() color: string;
 
   ngOnInit(): void { }
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(AuthDialogComponent, {
       width: '250px',
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
-
 }
 
 
@@ -58,11 +53,11 @@ export class DialogToolsComponent implements OnInit {
 </form>
   `,
 })
-export class DialogComponent {
+export class AuthDialogComponent {
 
   constructor(
     private authService: AuthenticationService,
-    public dialogRef: MatDialogRef<DialogComponent>,
+    public dialogRef: MatDialogRef<AuthDialogComponent>,
     private router: Router
   ) { }
 
@@ -77,7 +72,7 @@ export class DialogComponent {
     this.authService.login(this.stateForm.get('email').value, this.stateForm.get('password').value)
       .subscribe(() => {
         this.dialogRef.close();
-        this.router.navigate(['/app']);
+        this.router.navigate(['/']);
       }, error => {
           this.serverError = true;
         }

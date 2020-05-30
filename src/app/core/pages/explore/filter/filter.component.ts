@@ -74,13 +74,8 @@ export class FilterComponent implements OnInit {
 
 
   onSubmit() {
-    this.attractionService.getAttractions(this.stateForm.get('city').value, this.stateForm.get('category').value).subscribe(
-        (res: Attraction[]) => {
-          this.attractionService.dataStore.attractions = res;
-          this.attractionService._attractions.next(Object.assign({}, this.attractionService.dataStore).attractions);
-          this.attractionsChange.emit(true);
-    },
-      error => console.log('failed to fetch attractions'));
+    this.attractionService.loadAttractions(this.stateForm.get('city').value, this.stateForm.get('category').value);
+    this.attractionsChange.emit(true);
 
 
 

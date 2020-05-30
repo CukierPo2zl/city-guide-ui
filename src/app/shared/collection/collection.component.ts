@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { CollectionDialogComponent } from './collection-dialog/collection-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Attraction } from 'src/app/models/attraction';
+import { AttractionService } from 'src/app/services/attraction.service';
 
 
 @Component({
@@ -10,12 +11,16 @@ import { Attraction } from 'src/app/models/attraction';
   styleUrls: ['./collection.component.scss']
 })
 export class CollectionComponent implements OnInit {
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private attractionService: AttractionService
+    ) { }
 
-  @Input()
+
   elements: Attraction[];
 
   ngOnInit(): void {
+    this.attractionService.myCollection.subscribe(res => this.elements = res);
   }
 
   openDialog(): void {
@@ -27,12 +32,7 @@ export class CollectionComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-
-    });
   }
 
-  addElement(event){
-    this.elements.push(event);
-  }
+
 }

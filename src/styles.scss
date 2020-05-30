@@ -5,20 +5,20 @@
 @include mat-core();
 
 $md-custom: (
-    50 : #e8eaf6,
-    100 : #c5cae9,
-    200 : #9fa8da,
-    300 : #7986cb,
-    400 : #5c6bc0,
-    500 : #3f51b5,
-    600 : #3949ab,
-    700 : #303f9f,
-    800 : #283593,
-    900 : #1a237e,
-    A100 : #8c9eff,
-    A200 : #536dfe,
-    A400 : #3d5afe,
-    A700 : #304ffe,
+    50 : #e1e8f5,
+    100 : #b3c5e6,
+    200 : #819ed6,
+    300 : #4f77c5,
+    400 : #2959b8,
+    500 : #033cac,
+    600 : #0336a5,
+    700 : #022e9b,
+    800 : #022792,
+    900 : #011a82,
+    A100 : #afb9ff,
+    A200 : #7c8cff,
+    A400 : #495fff,
+    A700 : #3049ff,
     contrast: (
         50 : #000000,
         100 : #000000,
@@ -31,11 +31,12 @@ $md-custom: (
         800 : #ffffff,
         900 : #ffffff,
         A100 : #000000,
-        A200 : #ffffff,
+        A200 : #000000,
         A400 : #ffffff,
         A700 : #ffffff,
     )
 );
+
 
 
 $city-guide-primary: mat-palette($md-custom);
@@ -56,3 +57,5 @@ $city-guide-theme: mat-light-theme($city-guide-primary, $city-guide-accent, $cit
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
