@@ -23,7 +23,9 @@ import { TokenInterceptor } from './helpers/token.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { ProfileComponent } from './core/pages/profile/profile.component';
 import { ExploreComponent } from './core/pages/explore/explore.component';
-
+import { GeneratePlanComponent } from './core/pages/generate-plan/generate-plan.component';
+import { CollectionMapDialogComponent } from './shared/collection/collection-map-dialog/collection-map-dialog.component';
+import { GoogleMapsModule } from '@angular/google-maps'
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,9 @@ import { ExploreComponent } from './core/pages/explore/explore.component';
     CollectionComponent,
     CollectionDialogComponent,
     ProfileComponent,
-    ExploreComponent
+    ExploreComponent,
+    GeneratePlanComponent,
+    CollectionMapDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,8 @@ import { ExploreComponent } from './core/pages/explore/explore.component';
     ReactiveFormsModule,
     MaterialModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleMapsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

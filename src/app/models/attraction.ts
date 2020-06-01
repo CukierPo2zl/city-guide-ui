@@ -10,4 +10,6 @@ export interface Attraction {
   city: City;
   category: Category;
   added: boolean;
+  latitude: number;
+  longitude: number;
 }

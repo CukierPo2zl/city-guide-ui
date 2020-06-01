@@ -1,0 +1,47 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>Wybierz atrakcję, od której chcesz zacząć</h2>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-divider></mat-divider>
+<form [formGroup]="stateForm" (ngSubmit)="onSubmit()">
+<mat-dialog-content class="mat-typography">
+    <mat-form-field required>
+    <mat-label>Punkt początkowy</mat-label>
+    <mat-select (selectionChange)="placeChanged($event)" formControlName = "startPoint">
+      <mat-option *ngFor="let element of elements" [value]="element">
+        {{element.name}}, {{element.city.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field required>
+    <mat-label>Punkt końcowy</mat-label>
+    <mat-select (selectionChange)="placeChanged($event)" formControlName = "endPoint">
+      <mat-option *ngFor="let element of elements" [value]="element">
+        {{element.name}}, {{element.city.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<google-map
+  width="100%"
+  [center] = this.center
+  >
+  <map-marker
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [label]="marker.label"
+    [title]="marker.title"
+    [options]="marker.options"
+  ></map-marker>
+</google-map>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button color="primary" mat-raised-button>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</mat-dialog-actions>
+</form>

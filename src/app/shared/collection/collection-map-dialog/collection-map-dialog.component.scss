@@ -1,0 +1,27 @@
+@import "global";
+@import "breakpoints";
+
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+}
+.mat-dialog-content {
+  // min-height:400px;
+  // @include for-size(XS-max){
+    padding: 0;
+  // }
+}
+.mat-form-field{
+  padding: 5px 24px;
+}
+button.mat-icon-button {
+  &.cdk-program-focused {
+    ::ng-deep .mat-button-focus-overlay {
+      opacity: 0;
+    }
+  }
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}

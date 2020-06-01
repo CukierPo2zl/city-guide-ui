@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-content>
+    <div class="output">
+      <div class="map">
+        <google-map *ngIf="this.loaded"
+        width="100%"
+        [center] = 'this.center'>
+        <map-marker
+        *ngFor="let marker of markers"
+        [position]="marker.position"
+        [label]="marker.label"
+        [title]="marker.title"
+        [options]="marker.options"
+      ></map-marker>
+      <map-polyline [path] = "this.waypoints">
+
+      </map-polyline>
+        </google-map>
+      </div>
+      <div class="attractions">
+        <mat-list>
+          <mat-list-item>asd</mat-list-item>
+          <mat-list-item>asd</mat-list-item>
+          <mat-list-item>asd</mat-list-item>
+          <mat-list-item>asd</mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+
+
+  </mat-card-content>
+
+</mat-card>
