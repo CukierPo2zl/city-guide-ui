@@ -12,4 +12,5 @@ export interface Attraction {
   added: boolean;
   latitude: number;
   longitude: number;
+  position: number;
 }

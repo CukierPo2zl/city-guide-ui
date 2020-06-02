@@ -70,7 +70,7 @@ export class CollectionMapDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.stateForm.valid) {
+    if (this.stateForm.valid && this.elements.length >= 2) {
       this.planService.isGenerated.next(true);
       this.dialogRef.close();
       this.router.navigate(['/app/plan'], {
