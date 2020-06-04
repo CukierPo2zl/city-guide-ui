@@ -13,4 +13,13 @@ export interface Attraction {
   latitude: number;
   longitude: number;
   position: number;
+  routeLength: number;
+  travelTime: number;
 }
+export interface OrderedAttraction{
+  attraction: number;
+  order: number;
+  travel_time: number;
+  travel_length: number;
+}
+

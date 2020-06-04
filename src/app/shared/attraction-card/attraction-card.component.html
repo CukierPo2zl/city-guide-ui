@@ -1,9 +1,9 @@
-<mat-card class="attraction-card mat-elevation-z0">
+<mat-card class="attraction-card mat-elevation-z0" >
 
-  <img mat-card-image
+  <img mat-card-image (click) = "openDialog()"
     [src]="this.instance.picture"
     alt="Photo">
-  <mat-card-content>
+  <mat-card-content (click) = "openDialog()">
     <mat-card-title>
       {{ (this.instance.name.length>30)
             ? (this.instance.name | slice:0:30)+'...'
@@ -18,6 +18,7 @@
         }}</p>
 
   </mat-card-content>
+
   <div class="actions">
       <button (click)="addToCollection()" mat-fab color="primary" [disabled]="this.instance.added">
         <mat-icon *ngIf="!this.instance.added; else elementAdded">add</mat-icon>
@@ -26,6 +27,7 @@
         </ng-template>
       </button>
   </div>
+
   <div *ngIf="isTrending" class="popular">
     <div>
       <mat-icon>whatshot</mat-icon>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
 import { BehaviorSubject } from 'rxjs';
+import { OrderedAttraction } from '../models/attraction';
 
 
 @Injectable({
@@ -46,4 +47,12 @@ export class PlanService {
     return this.http.get(this.apiUrl +
       points + '/json?computeBestOrder=true&travelMode=pedestrian&routeType=shortest&key=' + environment.tomtom_api_key);
   }
+  postPlan(route: OrderedAttraction[], route_length: number) {
+    return this.http.post(environment.url + 'api/plan/create', { route, route_length });
+  }
+
+  getMyPlans(){
+    return this.http.get(environment.url + 'api/plan/');
+  }
+
 }

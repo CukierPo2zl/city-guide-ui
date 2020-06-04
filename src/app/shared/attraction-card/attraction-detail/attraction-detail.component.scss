@@ -1,0 +1,30 @@
+@import "breakpoints";
+
+
+  .actions{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .icon{
+    margin-top:10px;
+  }
+
+  img{
+    object-fit: cover;
+    max-height: 350px;
+    @include for-size(XS-max){
+      max-height: 200px;
+    }
+  }
+  .p1{
+    justify-content: center;
+
+  }
+  .mat-dialog-content {
+      // padding: 1px;
+  }
+.mat-dialog-container{
+    border-radius: 20px;
+  }

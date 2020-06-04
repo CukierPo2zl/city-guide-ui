@@ -7,6 +7,8 @@ import { ProfileComponent } from './core/pages/profile/profile.component';
 import { ExploreComponent } from './core/pages/explore/explore.component';
 import { GeneratePlanComponent } from './core/pages/generate-plan/generate-plan.component';
 import { PlanGuardService } from './services/plan.guard';
+import { MyPlansComponent } from './core/pages/myplans/myplans.component';
+import { ExamplesComponent } from './core/pages/examples/examples.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -14,6 +16,9 @@ const routes: Routes = [
     {path: '', component: ExploreComponent},
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
     { path: 'plan', component: GeneratePlanComponent, canActivate: [PlanGuardService] },
+    { path: 'myplans', component: MyPlansComponent, canActivate: [AuthGuardService] },
+    { path: 'examples', component: ExamplesComponent },
+
   ] },
   { path: '**', redirectTo: '/' }
 ];

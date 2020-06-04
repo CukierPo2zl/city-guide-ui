@@ -1,1 +1,32 @@
-<p>profile works!</p>
+<mat-card class="example-card" *ngIf="this.isLoggedIn()">
+  <div *ngIf="this.currentUser">
+
+
+
+  <mat-card-header class ="header">
+
+    <mat-card-title class = "title">{{this.currentUser.username}}</mat-card-title>
+    <mat-card-subtitle>{{this.currentUser.email}}</mat-card-subtitle>
+  </mat-card-header>
+
+
+  <img mat-card-image class="profile-picture"
+    src="{{this.currentUser.image}}" >
+
+  <label class="unv">
+    <input type ="file"  accept="image/*" #Image />
+  </label>
+
+
+
+  <mat-card-content >
+    <nav>
+      <button mat-raised-button color="primary" class="btn" (click) = "Image.click()" >Zmień zdjęcie profilowe</button>
+
+      <button  mat-raised-button color="primary" class="btn">Twoje plany</button>
+
+    </nav>
+  </mat-card-content>
+
+  </div>
+</mat-card>

@@ -1,0 +1,14 @@
+<mat-card-title class="title">{{data.instance.name}}</mat-card-title>
+<mat-card-subtitle class="subtitle">{{data.instance.category.name}} w {{data.instance.city.name}}</mat-card-subtitle>
+<mat-dialog-content class="mat-typography">
+<img mat-card-image class="img" src="{{data.instance.picture}}" alt="Photo of a Shiba Inu">
+
+  <p>
+    {{data.instance.description}}
+  </p>
+  <p>Ocena: {{data.instance.rate}} </p>
+
+</mat-dialog-content>
+<mat-card-actions>
+
+</mat-card-actions>

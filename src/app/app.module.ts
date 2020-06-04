@@ -25,7 +25,12 @@ import { ProfileComponent } from './core/pages/profile/profile.component';
 import { ExploreComponent } from './core/pages/explore/explore.component';
 import { GeneratePlanComponent } from './core/pages/generate-plan/generate-plan.component';
 import { CollectionMapDialogComponent } from './shared/collection/collection-map-dialog/collection-map-dialog.component';
-import { GoogleMapsModule } from '@angular/google-maps'
+import { GoogleMapsModule } from '@angular/google-maps';
+import { DialogConfirmComponent } from './landing/dialog-confirm/dialog-confirm.component';
+import { AttractionDetailComponent } from './shared/attraction-card/attraction-detail/attraction-detail.component';
+import { MyPlansComponent } from './core/pages/myplans/myplans.component';
+import { ExamplesComponent } from './core/pages/examples/examples.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +49,10 @@ import { GoogleMapsModule } from '@angular/google-maps'
     ExploreComponent,
     GeneratePlanComponent,
     CollectionMapDialogComponent,
+    DialogConfirmComponent,
+    AttractionDetailComponent,
+    MyPlansComponent,
+    ExamplesComponent,
   ],
   imports: [
     BrowserModule,

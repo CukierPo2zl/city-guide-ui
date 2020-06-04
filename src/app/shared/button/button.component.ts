@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FunctionCall } from '@angular/compiler';
 
 @Component({
   selector: 'app-button',
@@ -18,6 +19,8 @@ export class ButtonComponent implements OnInit {
   @Input() link: string;
 
   @Input() type: string;
+
+
   constructor() { }
 
   ngOnInit(): void {

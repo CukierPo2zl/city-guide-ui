@@ -27,6 +27,9 @@ export class AuthenticationService {
         }
       }));
   }
+  register(email: string, username: string, password1: string, password2) {
+    return this.http.post(environment.url + 'api/users/auth/register', {username, email, password1, password2});
+  }
 
   logout() {
     localStorage.removeItem('session');

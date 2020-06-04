@@ -39,11 +39,19 @@ export class AttractionService {
     });
   }
 
-  remarkFABs(){
+  remarkFABs() {
     this.attractionsDataStore.attractions.forEach((obj) => {
       if (this.collectionDataStore.myCollection.find(element => element.pk === obj.pk)) {
         obj.added = true;
       }
+    });
+  }
+
+  clearCollection() {
+    this.collectionDataStore.myCollection = [];
+    this.myCollectionSource.next(Object.assign({}, this.collectionDataStore).myCollection);
+    this.attractionsDataStore.attractions.forEach((obj) => {
+        obj.added = false;
     });
   }
 

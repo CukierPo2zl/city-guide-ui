@@ -11,21 +11,68 @@
         </google-map>
 
       </div>
-      <div class="attractions">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <div id="content" #contentiv class="attractions" id="content" #content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
           <ng-container matColumnDef="lp">
             <th mat-header-cell *matHeaderCellDef> lp. </th>
             <td mat-cell *matCellDef="let element"> {{ element.position }}</td>
           </ng-container>
 
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef> nazwa </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef> miasto </th>
+            <td mat-cell *matCellDef="let element"> {{element.city.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef> kategoria </th>
+            <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+
+        <mat-list>
+          <mat-list-item>Długość trasy: {{this.length}} m</mat-list-item>
+        </mat-list>
+
+      </div>
+      <mat-vertical-stepper #stepper>
+        <mat-step *ngFor="let step of dataSource; let i = index;">
+          <div *ngIf="(i+1) === dataSource.length; else content">
+            <ng-template matStepLabel>{{step.name}}</ng-template>
+            <img src="https://img.icons8.com/nolan/64/finish-flag.png" />
+          </div>
+          <ng-template #content>
+            <ng-template matStepLabel>{{step.name}}</ng-template>
+            <ng-template matStepperIcon="edit" let-index="index">
+              {{index+1}}
+            </ng-template>
+            <mat-list>
+              <mat-list-item><img src="https://img.icons8.com/nolan/32/point-objects.png" /> {{step.routeLength}} m
+              </mat-list-item>
+              <mat-list-item><img src="https://img.icons8.com/nolan/32/stopwatch.png" />
+                {{(step.travelTime/60).toPrecision(2)}} min</mat-list-item>
+            </mat-list>
+          </ng-template>
+
+        </mat-step>
+
+      </mat-vertical-stepper>
+
+      <div class="actions" align="end">
+        <button class="build-pdf" mat-raised-button (click)="captureScreen()" color="primary">
+          Pobierz
+          <mat-icon>get_app</mat-icon>
+        </button>
+        <button mat-raised-button (click)="savePlan()" color="primary" [disabled] = "this.saved">
+          Zapisz
+        </button>
       </div>
     </div>
     <ng-template #loading>
