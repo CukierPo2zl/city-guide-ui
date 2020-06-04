@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Plan } from 'src/app/models/plan';
+import { Plan, PlanResponse } from 'src/app/models/plan';
 import { PlanService } from 'src/app/services/plan.service';
 
 @Component({
@@ -11,14 +11,14 @@ export class MyPlansComponent implements OnInit {
 
   constructor(private planService: PlanService) { }
 
-  plan: Plan[];
+  plans: PlanResponse[];
 
   ngOnInit(): void {
     this.planService.getMyPlans().subscribe(
-      (res: Plan[]) => {
-        this.plan = res;
+      (res: PlanResponse[]) => {
+        this.plans = res;
       }
-    )
+    );
   }
 
 }

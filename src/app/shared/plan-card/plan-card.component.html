@@ -1,0 +1,17 @@
+<mat-card class="plan-card" (click)="openDialog()">
+
+  <img mat-card-image class="img-item" src="{{instance.route[0].attraction.picture}}" />
+
+  <div class="summary">
+    <mat-list>
+      <mat-list-item>
+        <img src="https://img.icons8.com/nolan/32/point-objects.png" />{{instance.route_length}} m
+      </mat-list-item>
+      <mat-list-item *ngFor="let route of routes">
+        <div mat-line>{{route.attraction.name}}</div>
+        <div mat-line>{{route.attraction.city.name}}, {{route.attraction.category.name}}</div>
+      </mat-list-item>
+      <mat-list-item>...</mat-list-item>
+    </mat-list>
+  </div>
+</mat-card>

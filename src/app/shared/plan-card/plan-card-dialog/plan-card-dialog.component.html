@@ -1,0 +1,41 @@
+<google-map width="100%" [center]='this.center'>
+  <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label" [title]="marker.title"
+    [options]="marker.options"></map-marker>
+  <map-polyline [path]="leg.points" [options]="this.options" *ngFor="let leg of legs">
+
+  </map-polyline>
+</google-map>
+<table id="content" #contentiv mat-table [dataSource]="dataSource" class="mat-elevation-z0" style="width: 100%;">
+  <ng-container matColumnDef="lp">
+    <th mat-header-cell *matHeaderCellDef> lp. </th>
+    <td mat-cell *matCellDef="let element"> {{ element.position }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> nazwa </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef> miasto </th>
+    <td mat-cell *matCellDef="let element"> {{element.city.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef> kategoria </th>
+    <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<div class="actions" align="end">
+  <button style="margin-right: 10px;" mat-raised-button color="primary" (click)="captureScreen()">
+    Pobierz
+    <mat-icon>get_app</mat-icon>
+  </button>
+  <button mat-raised-button  color="warn">
+    Usuń
+  </button>
+</div>

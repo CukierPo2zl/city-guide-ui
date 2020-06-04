@@ -30,6 +30,8 @@ import { DialogConfirmComponent } from './landing/dialog-confirm/dialog-confirm.
 import { AttractionDetailComponent } from './shared/attraction-card/attraction-detail/attraction-detail.component';
 import { MyPlansComponent } from './core/pages/myplans/myplans.component';
 import { ExamplesComponent } from './core/pages/examples/examples.component';
+import { PlanCardComponent } from './shared/plan-card/plan-card.component';
+import { PlanCardDialogComponent } from './shared/plan-card/plan-card-dialog/plan-card-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { ExamplesComponent } from './core/pages/examples/examples.component';
     AttractionDetailComponent,
     MyPlansComponent,
     ExamplesComponent,
+    PlanCardComponent,
+    PlanCardDialogComponent,
   ],
   imports: [
     BrowserModule,

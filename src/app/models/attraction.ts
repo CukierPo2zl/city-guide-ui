@@ -23,3 +23,9 @@ export interface OrderedAttraction{
   travel_length: number;
 }
 
+export interface OrderedAttractionResponse{
+  attraction: Attraction;
+  order: number;
+  travel_time: number;
+  travel_length: number;
+}
