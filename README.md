@@ -1,6 +1,15 @@
 # CityGuide
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+Web app helpful with planning a trip.
+
+address: https://city-guide-2902e.web.app/app
+
+* pick places that you want to see
+![example image](https://github.com/CukierPo2zl/city-guide-ui/blob/master/src/assets/example3.png)
+* generating the best trip route based on the distance between places  (calculations provided by https://www.tomtom.com/)
+![example image](https://github.com/CukierPo2zl/city-guide-ui/blob/master/src/assets/example2.png)
+* save & export generated plan
+![example image](https://github.com/CukierPo2zl/city-guide-ui/blob/master/src/assets/example1.png)
 
 ## Development server
 
